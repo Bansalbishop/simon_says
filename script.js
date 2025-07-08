@@ -6,6 +6,21 @@ let level=0;
 let max=0;
 let btn=document.querySelector("button");
 let h2=document.querySelector("h2");
+// Support for mobile (tap anywhere to start)
+document.addEventListener("touchstart", function () {
+    if (started == false) {
+        started = true;
+        levelup();
+    }
+}, { once: true });  // only runs once
+
+document.addEventListener("click", function () {
+    if (started == false) {
+        started = true;
+        levelup();
+    }
+}, { once: true });  // only runs once
+
 
 document.addEventListener("keypress",function(e){
     if(started==false){
