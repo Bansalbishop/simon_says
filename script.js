@@ -7,15 +7,36 @@ let max=0;
 let btn=document.querySelector("button");
 let h2=document.querySelector("h2");
 
-
-
-document.addEventListener("keypress",function(event){
-   if(started==false){
+document.addEventListener("keypress",function(e){
+    if(started==false){
      started=true;
-    console.log("game started");
     levelup();
    }
+
+
+    else{
+        if(e.code=="Digit1"||e.code=="Numpad1"){
+            
+            let btn=document.getElementById("red");
+            buttonpress.call(btn);
+            
+        }
+        if(e.code=="Digit2"||e.code=="Numpad2"){
+            let btn=document.getElementById("blue");
+            buttonpress.call(btn);
+        }
+        if(e.code=="Digit3"||e.code=="Numpad3"){
+            let btn=document.getElementById("green");
+            buttonpress.call(btn);
+        }
+        if(e.code=="Digit4"||e.code=="Numpad4"){
+           let btn=document.getElementById("orange");
+            buttonpress.call(btn);
+        }
+    }
 });
+
+
 
 
 function flash(btn){
@@ -75,6 +96,7 @@ function checkans(){
 function buttonpress(){
     if(started==true){
         let btn=this;
+        
     flash(btn);
 
     let usercolor=btn.getAttribute("id");
@@ -87,8 +109,41 @@ function buttonpress(){
 
 
 }
-
 let allbtn=document.querySelectorAll(".btn");
 for(btn of allbtn){
     btn.addEventListener("click",buttonpress); 
 }
+
+
+
+
+
+
+
+
+
+
+function keypressed(){
+    if(started==true){
+        let btn=this;
+        console.log(btn);
+        
+    flash(btn);
+
+    let usercolor=btn.getAttribute("id");
+    userseq.push(usercolor);
+    checkans();
+    }
+    else{
+        alert("Press any key!!!");
+    }
+
+}
+
+
+
+
+
+
+
+
